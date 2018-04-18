@@ -1,7 +1,7 @@
 const Counter = React.createClass({
 
 	getDefaultProps() {
-		console.log('Initialization. Default prop for the component.');
+		console.log('Initialization. Default props for the component.');
 	},
 
 	getInitialState: function() {
@@ -31,19 +31,19 @@ const Counter = React.createClass({
 	},
 
 	componentWillMount() {
-		console.log('Mounting.');
+		console.log('Mounting. State is not being rendered');
 	},
 
 	componentDidMount() {
-		console.log('The component has been inserted into DOM');
+		console.log('The component has been inserted into DOM. We can do some operations on it.');
 	},
 
 	componentWillReceiveProps() {
-    	console.log('Update. The button had been clicked and new props were sent.');
+    	console.log('Update. Invoked if the component receives a new props. If not, it is not being rendered');
     },
 
      shouldComponentUpdate() {
-    	console.log('Update. Useful for the verification if new props have been sent. If not, we can avoid rendering an element and all of its children.');
+    	console.log('Update. Useful for the verification if the component receives a new props. We can use it for the optimization of our app');
     	return true;
     	/* 
     	shouldComponentUpdate(nextProps, nextState) {

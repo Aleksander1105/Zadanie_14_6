@@ -23,7 +23,7 @@ const Counter = React.createClass({
 	},
 
 	render: function() {
-		return React.createElement('div', {className: 'container'},
+		return React.createElement('div', {className: 'counters'},
 				React.createElement('button', {onClick: this.increment, className: 'button1'}, 'Plus'),	
 				React.createElement('button', {onClick: this.decrement, className: 'button2'}, 'Minus'),
 				React.createElement('p', {className: 'number'}, 'Liczba: ' + this.state.counter),
@@ -68,8 +68,8 @@ const Counter = React.createClass({
 var element1 = React.createElement(Counter);
 var element2 = React.createElement(Counter);
 var element =
-  React.createElement('div', {},
-    React.createElement('span', {}, element1),
-    React.createElement('span', {}, element2)
+  React.createElement('div', {className: 'container'},
+    React.createElement('span', {className: 'counter1'}, element1),
+    React.createElement('span', {className: 'counter2'}, element2)
   );
 ReactDOM.render(element, document.getElementById('app'));

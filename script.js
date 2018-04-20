@@ -69,7 +69,7 @@ var element1 = React.createElement(Counter);
 var element2 = React.createElement(Counter);
 var element =
   React.createElement('div', {className: 'container'},
-    React.createElement('span', {className: 'counter1'}, element1),
-    React.createElement('span', {className: 'counter2'}, element2)
+    React.createElement('div', {className: 'counter1'}, element1),
+    React.createElement('div', {className: 'counter2'}, element2)
   );
 ReactDOM.render(element, document.getElementById('app'));

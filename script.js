@@ -13,6 +13,7 @@ const Counter = React.createClass({
 	increment: function() {
 		this.setState({
 			counter: this.state.counter +1
+
 		});
 	},
 
@@ -26,7 +27,8 @@ const Counter = React.createClass({
 		return React.createElement('div', {className: 'container'},
 				React.createElement('button', {onClick: this.increment, className: 'button'}, 'Plus'),	
 				React.createElement('button', {onClick: this.decrement, className: 'button'}, 'Minus'),
-				React.createElement('p', {className: 'number'}, 'Liczba: ' + this.state.counter),
+				React.createElement('p', {className: 'number1'}, 'Liczba: ' + this.state.counter),
+				React.createElement('p', {className: 'number2'}, 'Liczba: ' + this.state.counter),
 		);
 	},
 

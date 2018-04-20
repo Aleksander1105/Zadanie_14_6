@@ -1,4 +1,9 @@
-var Counter = React.createClass({
+const Counter = React.createClass({
+
+	getDefaultProps() {
+		console.log('Initialization. Default props for the component.');
+	},
+
 	getInitialState: function() {
 		return {
 			counter: 0
@@ -18,17 +23,53 @@ var Counter = React.createClass({
 	},
 
 	render: function() {
-		return React.createElement('div', {onClick: this.increment},
-			React.createElement('span', {}, 'Licznik ' + this.state.counter)
+		return React.createElement('div', {className: 'counters'},
+				React.createElement('button', {onClick: this.increment, className: 'button1'}, 'Plus'),	
+				React.createElement('button', {onClick: this.decrement, className: 'button2'}, 'Minus'),
+				React.createElement('p', {className: 'number'}, 'Liczba: ' + this.state.counter),
 		);
-	}
+	},
 
-	render: function() {
-		return React.createElement('div', {onClick: this.decrement},
-			React.createElement('span', {}, 'Licznik ' + this.state.counter)
-		);
-	}
+	componentWillMount() {
+		console.log('Mounting. State is not being rendered');
+	},
+
+	componentDidMount() {
+		console.log('The component has been inserted into DOM. We can do some operations on it.');
+	},
+
+	componentWillReceiveProps() {
+    	console.log('Update. Invoked if the component receives a new props. If not, it is not being rendered');
+    },
+
+     shouldComponentUpdate() {
+    	console.log('Update. Useful for the verification if the component receives a new props. We can use it for the optimization of our app');
+    	return true;
+    	/* 
+    	shouldComponentUpdate(nextProps, nextState) {
+      		(this.state.count !== nextState.count ? return true : return false);
+    	};
+    	*/
+    },
+  	componentWillUpdate() {
+    	console.log('Update. ShouldComponentUpdate returned true. We can perform preparations for an upcoming render.');
+  	},
+
+  	componentDidUpdate() {
+    	console.log('Update. After re-render. We can use it to perform operations on DOM after the data has been updated');
+  	},
+
+  	componentWillUnmount() {
+    	console.log('Unmounting. Before the component was removed from the DOM. We can use it to clean up DOM elements created in componentDidMount or DidUpdate.');
+  	},
 });
 
-var element = React.createElement(Counter);
+
+var element1 = React.createElement(Counter);
+var element2 = React.createElement(Counter);
+var element =
+  React.createElement('div', {className: 'container'},
+    React.createElement('div', {className: 'counter1'}, element1),
+    React.createElement('div', {className: 'counter2'}, element2)
+  );
 ReactDOM.render(element, document.getElementById('app'));
